@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using _191_PROJECT_BACKEND.Data;
 using _191_PROJECT_BACKEND.Models;
 
-namespace _191_PROJECT_BACKEND
+namespace _191_PROJECT_BACKEND.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

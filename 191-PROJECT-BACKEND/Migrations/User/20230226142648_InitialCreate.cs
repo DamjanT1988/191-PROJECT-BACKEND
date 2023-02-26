@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace _191_PROJECT_BACKEND.Migrations
+namespace _191_PROJECT_BACKEND.Migrations.User
 {
     public partial class InitialCreate : Migration
     {

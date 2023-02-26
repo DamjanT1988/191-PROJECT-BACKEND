@@ -8,7 +8,7 @@ using _191_PROJECT_BACKEND.Data;
 
 #nullable disable
 
-namespace _191_PROJECT_BACKEND.Migrations
+namespace _191_PROJECT_BACKEND.Migrations.User
 {
     [DbContext(typeof(UserContext))]
     [Migration("20230226142648_InitialCreate")]

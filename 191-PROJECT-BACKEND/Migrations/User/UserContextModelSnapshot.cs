@@ -7,7 +7,7 @@ using _191_PROJECT_BACKEND.Data;
 
 #nullable disable
 
-namespace _191_PROJECT_BACKEND.Migrations
+namespace _191_PROJECT_BACKEND.Migrations.User
 {
     [DbContext(typeof(UserContext))]
     partial class UserContextModelSnapshot : ModelSnapshot
