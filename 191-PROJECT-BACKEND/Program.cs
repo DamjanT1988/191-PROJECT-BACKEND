@@ -4,11 +4,7 @@ using _191_PROJECT_BACKEND.Data;
 using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionStringProduct = builder.Configuration.GetConnectionString("ProductContext") ?? throw new InvalidOperationException("Connection string 'ProductContext' not found.");
-builder.Services.AddDbContext<ProductContext>(options =>
-    options.UseSqlServer(connectionStringProduct));
-
-var connectionString = builder.Configuration.GetConnectionString("UserContext") ?? throw new InvalidOperationException("Connection string 'UserContextConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("UserContext") ?? throw new InvalidOperationException("Connection string 'UserContex' not found.");
 builder.Services.AddDbContext<UserContext>(options =>
     options.UseSqlite(connectionString));
 
