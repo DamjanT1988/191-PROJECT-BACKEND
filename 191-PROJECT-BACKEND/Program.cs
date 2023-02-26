@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using _191_PROJECT_BACKEND.Data;
 using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<ProductContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("ProductContext") ?? throw new InvalidOperationException("Connection string 'ProductContext' not found.")));
 
 var connectionString = builder.Configuration.GetConnectionString("UserContext") ?? throw new InvalidOperationException("Connection string 'UserContex' not found.");
 builder.Services.AddDbContext<UserContext>(options =>

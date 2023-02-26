@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "191-PROJECT-FRONTEND-ADMIN-APP", "191-PROJECT-BACKEND\191-PROJECT-FRONTEND-ADMIN-APP.csproj", "{ACCD4989-D9E1-4DF3-B097-4E09526405A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "191-PROJECT-BACKEND", "191-PROJECT-BACKEND\191-PROJECT-BACKEND.csproj", "{ACCD4989-D9E1-4DF3-B097-4E09526405A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
