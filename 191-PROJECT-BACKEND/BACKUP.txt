@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Migyston</title>
+    <link rel="icon" href="~/assets/favicon.ico" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Migyston_web_app.styles.css" asp-append-version="true" />
+</head>
+<body>
+<header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">_191_PROJECT_BACKEND</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2023 - _191_PROJECT_BACKEND - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+
+ADD
+@page
+@using Migyston_web_app.Models
+@model Migyston_web_app.Pages.ServiceModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1 class="display-3">ADD</h1>
+<br />
+<div class="row">
+            <div class="col-md bg-dark bg-gradient text-white p-4">
+              <h2 class='display-4'>ADD PRODUCT</h2>
+              <p>
+                Add a new product article below; all fields must be filled:
+              </p>
+
+<form method="post">
+        <div asp-validation-summary="All"></div>
+    
+    <div>
+                <label class="form-control-lg" asp-for="NewProduct.product_title">Name:</label>
+                <br />
+                <input type="text" asp-for="NewProduct.product_title" class="mr-5">
+                <br />
+                
+                <label class="form-control-lg" asp-for="NewProduct.ean_number">EAN:</label>
+                <br />
+                <input type="text" asp-for="NewProduct.ean_number" class="mr-5">
+                <br />
+
+                <label class="form-control-lg" asp-for="NewProduct.product_description">Description:</label>
+                <br />
+                <textarea rows="3" type="text" placeholder="max 250 words" asp-for="NewProduct.product_description" class="mr-5"></textarea>
+                <br />
+
+                <label class="form-control-lg" asp-for="NewProduct.price">Price:</label>
+                <br />
+                <input type="number" asp-for="NewProduct.price" class="mr-5" />
+                <br />
+
+                <label class="form-control-lg" asp-for="NewProduct.amount_storage">Amount:</label>
+                <br />
+                <input type="number" asp-for="NewProduct.amount_storage" class="mr-5" />
+                <br />
+
+                <label class="form-control-lg" asp-for="NewProduct.expiration_date">Expiration Date</label>
+                <br />
+                <input type="text" asp-for="NewProduct.expiration_date" class="mr-5" />
+                <br />
+
+                <label class="form-control-lg" asp-for="NewProduct.category">Category</label>
+                <br />
+                <select asp-for="NewProduct.category" asp-items="Html.GetEnumSelectList<ProductSize>()" class="mr-5"></select>
+                <br />
+
+                <label class="form-control-lg" asp-for="NewProduct.isSwedish">Made in Sweden</label>
+                <br />
+                <input type="checkbox" asp-for="NewProduct.isSwedish" class="ckbox">
+                <br /><br />
+
+        <button class="btn btn-primary">Add</button>
+    </div>
+</form>
+    </div>
+
+
+
+    <div class="col-md bg-dark bg-gradient text-white p-4">
+        <h2 class='display-4'>PRODUCT LIST</h2>
+        <p>
+            The latest new products are shown first:
+        </p>
+
+    @foreach (var product in Model.products)
+    {
+            <article>
+                <h3>@product.product_title <br/>Article # @product.id</h3>
+
+                <br />
+                <strong>Product title:</strong>
+                <p className="list">@product.product_title</p>
+                
+                <strong>Article number:</strong>
+                <p>@product.id</p>
+                
+                <strong>EAN number:</strong>
+                <p>@product.ean_number</p>
+                
+                <strong>Product description:</strong>
+                <p>@product.product_description</p>
+                
+                <strong>Selling price:</strong>
+                <p>@($"{product.price:C}") kr</p>
+                
+                <strong>Amount in storage:</strong>
+                <p id="storage">@product.amount_storage</p>
+                
+                <strong>Expiration date:</strong>
+                <p>@product.expiration_date</p>
+                
+                <strong>Category:</strong>
+                <p>@product.category</p>
+                
+                <strong>Natíonality:</strong>
+                <p>@Model.IsSwedish(product)</p>
+
+                <form method="post" asp-page-handler="Delete" asp-route-id="@product.id">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+                <br /><br />
+            </article>
+    }
+</div>
+</div>
+
+<style>
+    input.ckbox {
+        width: 25px;
+        height: 25px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 1.8em;
+    }
+
+
+    h3 {
+        font-size: 2.2em;
+    }
+
+
+    strong, label {
+        font-size: 1.35em;
+    }
+
+    .col-md {
+        text-align:center;
+    }
+    </style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+
+EDIT
+    @page
+@using Migyston_web_app.Models
+@model Migyston_web_app.Pages.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="display-3">EDIT</h1>
+<br />
+<div class="row">
+    <div class="col-md bg-dark bg-gradient text-white p-4">
+        <h2 class='display-4'>EDIT PRODUCT</h2>
+        <p>
+            Edit a product article below; latest created shown first; use browsers seacrh function to find (ctrl+f):
+        </p>
+
+        @foreach (var product in Model.products) {
+
+        <form method="post" id="@product.id">
+            <div asp-validation-summary="All"></div>
+
+                <h3> @product.product_title <br />Article # @product.id</h3>
+                
+                <label class="form-control-lg" asp-for="NewProduct.product_title">Name:</label>
+                <br />
+                    <input type="text" asp-for="NewProduct.product_title" class="mr-5" value="@product.product_title">
+                <br />
+
+                <label class="form-control-lg" asp-for="NewProduct.ean_number">EAN:</label>
+                <br />
+                <input type="text" asp-for="NewProduct.ean_number" class="mr-5" value="@product.ean_number">
+                <br />
+
+                <label class="form-control-lg" asp-for="NewProduct.product_description">Description:</label>
+                <br />
+                <input type="text" asp-for="NewProduct.product_description" class="mr-5" value="@product.product_description">
+                <br />
+
+                <label class="form-control-lg" asp-for="NewProduct.price">Price:</label>
+                <br />
+                <input type="number" asp-for="NewProduct.price" class="mr-5" value="@product.price"/>
+                <br />
+
+                <label class="form-control-lg" asp-for="NewProduct.amount_storage">Amount:</label>
+                <br />
+                <input type="number" asp-for="NewProduct.amount_storage" class="mr-5" value="@product.amount_storage"/>
+                <br />
+
+                <label class="form-control-lg" asp-for="NewProduct.expiration_date">Expiration Date</label>
+                <br />
+                <input type="text" asp-for="NewProduct.expiration_date" class="mr-5" value="@product.expiration_date" />
+                <br />
+
+                <label class="form-control-lg" asp-for="NewProduct.category">Category</label>
+                    <p><strong>@product.category</strong><br /><br /> If needed, change to new size:</p>
+                    <select asp-for="NewProduct.category" asp-items="Html.GetEnumSelectList<ProductSize>()" class="mr-5" selected="@product.category">
+                        </select>       
+                <br /><br />
+
+                <label class="form-control-lg" asp-for="NewProduct.isSwedish">Made in Sweden</label>
+                    <br />
+
+                    @if (product.isSwedish == true)
+                    {
+                        <input type="checkbox" asp-for="NewProduct.isSwedish" class="ckbox" checked>
+                    } else {
+                        <input type="checkbox" asp-for="NewProduct.isSwedish" class="ckbox">
+                    }
+
+                <input type="hidden" asp-for="NewProduct.id" class="mr-5" value="@product.id" />
+                <br /><br />
+                    
+                <input id="@product.id" type="submit" class="btn btn-primary" value="Update information!" />
+
+        </form>
+            <br />
+            <form method="post" asp-page-handler="Delete" asp-route-id="@product.id">
+                <button class="btn btn-danger">Delete</button>
+            </form>
+
+                <hr /><br />
+        }
+    </div>
+ 
+
+<style>
+
+    input.ckbox {
+        width:25px;
+        height:25px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 1.8em;
+    }
+
+        h3 {
+            font-size: 2.2em;
+        }
+
+    button {
+        font-size: 2em;
+        font-weight:800;
+    }
+
+    label {
+        font-size: 2em;
+    }
+
+    strong {
+        font-size: 1.5em;
+    }
+
+    hr {
+        color: yellow;
+        border:20px;
+    }
+
+    .col-md {
+        text-align: center;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

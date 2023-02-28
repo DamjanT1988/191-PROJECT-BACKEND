@@ -1,0 +1,77 @@
+﻿@page
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="display-3">EDIT</h1>
+<br />
+<div class="row">
+    <div class="col-md bg-dark bg-gradient text-white p-4">
+        <h2 class='display-4'>EDIT PRODUCT</h2>
+        <p>
+            Edit a product article below; latest created shown first; use browsers seacrh function to find (ctrl+f):
+        </p>
+
+
+        <form method="post" id="product.id">
+            <div asp-validation-summary="All"></div>
+
+
+        </form>
+            <br />
+            <form method="post" asp-page-handler="Delete" asp-route-id="product.id">
+                <button class="btn btn-danger">Delete</button>
+            </form>
+
+                <hr /><br />
+        }
+    </div>
+ 
+
+<style>
+
+    input.ckbox {
+        width:25px;
+        height:25px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 1.8em;
+    }
+
+        h3 {
+            font-size: 2.2em;
+        }
+
+    button {
+        font-size: 2em;
+        font-weight:800;
+    }
+
+    label {
+        font-size: 2em;
+    }
+
+    strong {
+        font-size: 1.5em;
+    }
+
+    hr {
+        color: yellow;
+        border:20px;
+    }
+
+    .col-md {
+        text-align: center;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

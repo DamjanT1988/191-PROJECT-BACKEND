@@ -1,0 +1,76 @@
+﻿@page
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1 class="display-3">ADD</h1>
+<br />
+<div class="row">
+            <div class="col-md bg-dark bg-gradient text-white p-4">
+              <h2 class='display-4'>ADD PRODUCT</h2>
+              <p>
+                Add a new product article below; all fields must be filled:
+              </p>
+
+<form method="post">
+        <div asp-validation-summary="All"></div>
+        <div>
+    
+
+        <button class="btn btn-primary">Add</button>
+    </div>
+</form>
+    </div>
+
+
+
+    <div class="col-md bg-dark bg-gradient text-white p-4">
+        <h2 class='display-4'>PRODUCT LIST</h2>
+        <p>
+            The latest new products are shown first:
+        </p>
+
+
+                <form method="post" asp-page-handler="Delete" asp-route-id="product.id">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+                <br /><br />
+            </article>
+    }
+</div>
+</div>
+
+<style>
+    input.ckbox {
+        width: 25px;
+        height: 25px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 1.8em;
+    }
+
+
+    h3 {
+        font-size: 2.2em;
+    }
+
+
+    strong, label {
+        font-size: 1.35em;
+    }
+
+    .col-md {
+        text-align:center;
+    }
+    </style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

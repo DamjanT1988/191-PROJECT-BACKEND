@@ -1,8 +1,16 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿
+@{
+    ViewData["Title"] = "Index";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to Migyston Intranet Inventory Service!</h1>
+    <p>INFORMATION:
+        <br/>
+        Navigate above to add and edit products
+    </p>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
