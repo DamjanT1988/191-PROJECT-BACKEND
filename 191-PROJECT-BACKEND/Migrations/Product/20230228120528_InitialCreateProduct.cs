@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace _191_PROJECT_BACKEND.Migrations.Product
 {
-    public partial class InitialCreate : Migration
+    public partial class InitialCreateProduct : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,7 +23,8 @@ namespace _191_PROJECT_BACKEND.Migrations.Product
                     Amount_storage = table.Column<int>(type: "INTEGER", nullable: true),
                     Expiration_date = table.Column<string>(type: "TEXT", nullable: true),
                     Category = table.Column<int>(type: "INTEGER", nullable: true),
-                    IsSwedish = table.Column<bool>(type: "INTEGER", nullable: true)
+                    IsSwedish = table.Column<bool>(type: "INTEGER", nullable: true),
+                    Image_path = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

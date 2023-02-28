@@ -11,8 +11,8 @@ using _191_PROJECT_BACKEND.Data;
 namespace _191_PROJECT_BACKEND.Migrations.Product
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20230226155823_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230228120528_InitialCreateProduct")]
+    partial class InitialCreateProduct
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,6 +38,9 @@ namespace _191_PROJECT_BACKEND.Migrations.Product
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Expiration_date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Image_path")
                         .HasColumnType("TEXT");
 
                     b.Property<bool?>("IsSwedish")

@@ -23,5 +23,6 @@ namespace _191_PROJECT_BACKEND.Models
             public string? Expiration_date { get; set; }
             public int? Category { get; set; }
             public bool? IsSwedish { get; set; }
+            public string? Image_path { get; set; }
     }
 }

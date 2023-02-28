@@ -38,6 +38,9 @@ namespace _191_PROJECT_BACKEND.Migrations.Product
                     b.Property<string>("Expiration_date")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Image_path")
+                        .HasColumnType("TEXT");
+
                     b.Property<bool?>("IsSwedish")
                         .HasColumnType("INTEGER");
 
