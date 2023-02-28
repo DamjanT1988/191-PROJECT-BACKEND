@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
@@ -23,6 +24,12 @@ namespace _191_PROJECT_BACKEND.Models
             public string? Expiration_date { get; set; }
             public int? Category { get; set; }
             public bool? IsSwedish { get; set; }
+            [Display(Name = "Image name")]
             public string? Image_path { get; set; }
+ 
+            //not stored in DB, but shown in UI
+            [NotMapped]
+            [Display(Name = "Image file")]
+            public IFormFile? Image_file { get; set; }
     }
 }

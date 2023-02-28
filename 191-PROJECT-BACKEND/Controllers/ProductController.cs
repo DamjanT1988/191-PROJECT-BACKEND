@@ -42,14 +42,44 @@ namespace _191_PROJECT_BACKEND.Controllers
             return productModel;
         }
 
+
         // POST: api/Product
         [HttpPost]
         public async Task<ActionResult<ProductModel>> PostProductModel(ProductModel productModel)
         {
-            _context.ProductModel.Add(productModel);
-            await _context.SaveChangesAsync();
+            
+                //image or not?
+                if (productModel.Image_file != null)
+                {
+                    //save image to wwwroot/imageupload
+                    string fileName = Path.GetFileNameWithoutExtension(productModel.Image_file.FileName);
+                    string extension = Path.GetExtension(productModel.Image_file.FileName);
 
-            return CreatedAtAction("GetProductModel", new { id = productModel.Id }, productModel);
+                    //remove space and add time
+                    productModel.Image_path = fileName = fileName.Replace(" ", String.Empty) + DateTime.Now.ToString("yymmssfff") + extension;
+
+                    //path
+                    string path = Path.Combine("wwwroot/imageupload/", fileName);
+
+                    //store file
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await productModel.Image_file.CopyToAsync(fileStream);
+                    }
+
+                    //create miniatures
+                    //CreateImageFiles(fileName);
+
+                }
+                else
+                {
+                    productModel.Image_path = null;
+                }
+
+                _context.ProductModel.Add(productModel);
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("GetProductModel", new { id = productModel.Id }, productModel);
+
         }
 
         // PUT: api/Product/5
@@ -102,5 +132,7 @@ namespace _191_PROJECT_BACKEND.Controllers
         {
             return _context.ProductModel.Any(e => e.Id == id);
         }
+
+        
     }
 }

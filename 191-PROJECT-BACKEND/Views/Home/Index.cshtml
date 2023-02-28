@@ -3,6 +3,22 @@
     ViewData["Title"] = "Index";
 }
 
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="ImageFile" accept="image/*" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
 <div class="text-center">
     <h1 class="display-4">Welcome to Migyston Intranet Inventory Service!</h1>
     <p>INFORMATION:
