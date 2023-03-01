@@ -11,7 +11,7 @@ using _191_PROJECT_BACKEND.Data;
 namespace _191_PROJECT_BACKEND.Migrations.Product
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20230301071656_InitialCreateProduct")]
+    [Migration("20230301074823_InitialCreateProduct")]
     partial class InitialCreateProduct
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

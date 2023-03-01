@@ -21,7 +21,7 @@ namespace _191_PROJECT_BACKEND.Models
             public double? Price { get; set; }
             public int? Amount_storage { get; set; }
             public string? Expiration_date { get; set; }
-            public int? Category { get; set; }
+            public ProductSize Category { get; set; }
             public bool? IsSwedish { get; set; }
             public string? Image_path { get; set; }
  
@@ -30,4 +30,5 @@ namespace _191_PROJECT_BACKEND.Models
             [Display(Name = "Image file")]
             public IFormFile? Image_file { get; set; }
     }
+    public enum ProductSize { Small, Medium, Large }
 }
