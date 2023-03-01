@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -15,8 +14,7 @@ namespace _191_PROJECT_BACKEND.Migrations.Product
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Product_title = table.Column<string>(type: "TEXT", nullable: false),
+                    Product_title = table.Column<string>(type: "TEXT", nullable: true),
                     Ean_number = table.Column<string>(type: "TEXT", nullable: true),
                     Product_description = table.Column<string>(type: "TEXT", nullable: true),
                     Price = table.Column<double>(type: "REAL", nullable: true),

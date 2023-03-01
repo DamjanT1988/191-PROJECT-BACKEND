@@ -12,10 +12,9 @@ namespace _191_PROJECT_BACKEND.Models
     {
             //data fields
             public int Id { get; set; }
-            public DateTime Date { get; set; }
 
             //user input and object properties
-            [Required]
+            //[Required]
             public string? Product_title { get; set; }
             public string? Ean_number { get; set; }
             public string? Product_description { get; set; }
@@ -24,7 +23,6 @@ namespace _191_PROJECT_BACKEND.Models
             public string? Expiration_date { get; set; }
             public int? Category { get; set; }
             public bool? IsSwedish { get; set; }
-            [Display(Name = "Image name")]
             public string? Image_path { get; set; }
  
             //not stored in DB, but shown in UI

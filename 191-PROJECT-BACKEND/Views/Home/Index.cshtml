@@ -1,42 +1,83 @@
-﻿@model ProductModel
+﻿@model IEnumerable<_191_PROJECT_BACKEND.Models.ProductModel>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Index"  enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+<h1>Index</h1>
 
-                <label class="form-control-lg" asp-for="Product_title">Name:</label>
-                <br />
-                <input type="text" asp-for="Product_title" class="mr-5">
-                <br />
-                <input asp-for="Image_file" accept="image/*" />
-                <span asp-validation-for="Image_file" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div class="text-center">
-    <h1 class="display-4">Welcome to Migyston Intranet Inventory Service!</h1>
-    <p>INFORMATION:
-        <br/>
-        Navigate above to add and edit products
-    </p>
-</div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-
-    <partial name="_ValidationScriptsPartial" />
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product_title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ean_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product_description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount_storage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expiration_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSwedish)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image_path)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ean_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount_storage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Expiration_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSwedish)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image_path)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
 }
+    </tbody>
+</table>

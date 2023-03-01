@@ -26,18 +26,6 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @if (SignInManager.IsSignedIn(User))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Views" asp-page="/Home/Index">START  </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Home" asp-page="/Add">ADD  </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Views" asp-page="/Home/Edit">EDIT</a>
-                            </li>
-                        }
                         <partial name="_LoginPartial" />
                     </ul>
                 </div>

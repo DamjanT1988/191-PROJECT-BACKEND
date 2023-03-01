@@ -11,7 +11,7 @@ using _191_PROJECT_BACKEND.Data;
 namespace _191_PROJECT_BACKEND.Migrations.Product
 {
     [DbContext(typeof(ProductContext))]
-    [Migration("20230228184851_InitialCreateProduct")]
+    [Migration("20230301071656_InitialCreateProduct")]
     partial class InitialCreateProduct
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,9 +30,6 @@ namespace _191_PROJECT_BACKEND.Migrations.Product
 
                     b.Property<int?>("Category")
                         .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Ean_number")
                         .HasColumnType("TEXT");
@@ -53,7 +50,6 @@ namespace _191_PROJECT_BACKEND.Migrations.Product
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Product_title")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
