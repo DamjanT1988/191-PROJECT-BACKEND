@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using _191_PROJECT_BACKEND.Data;
 using _191_PROJECT_BACKEND.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _191_PROJECT_BACKEND.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ProductContext _context;
