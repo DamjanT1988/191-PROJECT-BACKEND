@@ -10,7 +10,7 @@ using _191_PROJECT_BACKEND.Data;
 namespace _191_PROJECT_BACKEND.Migrations.Order
 {
     [DbContext(typeof(OrderContext))]
-    [Migration("20230304124242_InitialCreateOrder")]
+    [Migration("20230304144027_InitialCreateOrder")]
     partial class InitialCreateOrder
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

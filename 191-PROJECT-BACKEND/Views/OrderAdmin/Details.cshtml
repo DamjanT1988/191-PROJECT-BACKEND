@@ -1,0 +1,72 @@
+﻿@model _191_PROJECT_BACKEND.Models.OrderModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>OrderModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.order)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.order)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.telephone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.telephone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.company_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.company_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.company_org)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.company_org)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.company_adress)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.company_adress)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.contact_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.contact_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.status)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.internal_note)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.internal_note)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
