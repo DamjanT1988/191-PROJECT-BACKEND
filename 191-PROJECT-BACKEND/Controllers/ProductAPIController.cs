@@ -12,11 +12,11 @@ namespace _191_PROJECT_BACKEND.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductAPIController : ControllerBase
     {
         private readonly ProductContext _context;
 
-        public ProductController(ProductContext context)
+        public ProductAPIController(ProductContext context)
         {
             _context = context;
         }

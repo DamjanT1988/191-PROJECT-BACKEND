@@ -12,11 +12,11 @@ namespace _191_PROJECT_BACKEND.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrderController : ControllerBase
+    public class OrderAPIController : ControllerBase
     {
         private readonly OrderContext _context;
 
-        public OrderController(OrderContext context)
+        public OrderAPIController(OrderContext context)
         {
             _context = context;
         }

@@ -12,11 +12,11 @@ using Microsoft.AspNetCore.Authorization;
 namespace _191_PROJECT_BACKEND.Controllers
 {
     [Authorize]
-    public class HomeController : Controller
+    public class ProductAdminController : Controller
     {
         private readonly ProductContext _context;
 
-        public HomeController(ProductContext context)
+        public ProductAdminController(ProductContext context)
         {
             _context = context;
         }
