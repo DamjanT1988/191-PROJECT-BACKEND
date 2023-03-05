@@ -97,6 +97,14 @@ namespace _191_PROJECT_BACKEND.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            //!!!!!!!!!!!!
+            public string SecKey { get; set; } = "MGG88/*";
+
+            [DataType(DataType.Password)]
+            [Display(Name = "Enter security key")]
+            [Compare("SecKey", ErrorMessage = "The key is not correct.")]
+            public string Key { get; set; }
         }
 
 
