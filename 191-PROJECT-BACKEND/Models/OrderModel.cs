@@ -15,14 +15,14 @@ namespace _191_PROJECT_BACKEND.Models
 
         //user input and object properties
         //[Required]
-        public string? Order { get; set; }
-        public string? Email { get; set; }
-        public string? Telephone { get; set; }
-        public string? Company_name { get; set; }
-        public string? Company_org { get; set; }
-        public string? Company_adress { get; set; }
-        public string? Contact_name { get; set; }
-        public string? Status { get; set; }
-        public string? Internal_note { get; set; }
+        public string? order { get; set; }
+        public string? email { get; set; }
+        public string? telephone { get; set; }
+        public string? company_name { get; set; }
+        public string? company_org { get; set; }
+        public string? company_adress { get; set; }
+        public string? contact_name { get; set; }
+        public string? status { get; set; }
+        public string? internal_note { get; set; }
     }
 }
