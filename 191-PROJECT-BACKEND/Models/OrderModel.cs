@@ -14,7 +14,6 @@ namespace _191_PROJECT_BACKEND.Models
             public int Id { get; set; }
 
         //user input and object properties
-        //[Required]
         [Display(Name = "Order information:")]
         public string? order { get; set; }
         [Display(Name = "Customer email:")]

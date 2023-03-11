@@ -17,18 +17,32 @@ namespace _191_PROJECT_BACKEND.Models
         //[Required]
         [Display(Name = "Title:")]
         public string? Product_title { get; set; }
+
+        //[Required]
         [Display(Name = "EAN number:")]
         public string? Ean_number { get; set; }
+
+        //[Required]
         [Display(Name = "Description:")]
         public string? Product_description { get; set; }
+
+        //[Required]
         [Display(Name = "Price (SEK):")]
         public double? Price { get; set; }
+
+        //[Required]
         [Display(Name = "In storage:")]
         public int? Amount_storage { get; set; }
+
+        //[Required]
         [Display(Name = "Earliest expiration:")]
         public string? Expiration_date { get; set; }
+
+        //[Required]
         [Display(Name = "Category:")]
         public int? Category { get; set; }
+
+        //[Required]
         [Display(Name = "Made in Sweden?")]
         public bool? IsSwedish { get; set; }
         [Display(Name = "Image stored at:")]

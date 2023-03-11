@@ -1,12 +1,3 @@
 {
-  "dependencies": {
-    "mssql1": {
-      "type": "mssql.local",
-      "connectionId": "ConnectionStrings:ProductContext"
-    },
-    "mssql2": {
-      "type": "mssql.local",
-      "connectionId": "ConnectionStrings:OrderContext"
-    }
-  }
+  "dependencies": {}
 }

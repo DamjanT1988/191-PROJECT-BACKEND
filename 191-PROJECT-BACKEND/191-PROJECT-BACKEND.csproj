@@ -24,4 +24,16 @@
     <Folder Include="wwwroot\imageupload\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Orderdb.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Productdb.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Userdb.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

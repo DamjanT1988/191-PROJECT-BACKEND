@@ -1,12 +1,9 @@
 {
   "dependencies": {
-    "mssql1": {
+    "mssql3": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:ProductContext"
-    },
-    "mssql2": {
-      "type": "mssql",
-      "connectionId": "ConnectionStrings:OrderContext"
+      "connectionId": "ConnectionStrings:UserContext",
+      "dynamicId": null
     }
   }
 }
