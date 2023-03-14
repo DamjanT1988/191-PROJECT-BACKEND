@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Product_title" class="control-label"></label>
@@ -58,13 +58,17 @@
                 <input asp-for="Image_path" class="form-control" />
                 <span asp-validation-for="Image_path" class="text-danger"></span>
             </div>
+             <div class="form-group">
+                <label for="Image_file">Select an image file to upload:</label> <br />
+                <input type="file" id="Image_file" name="Image_file" class="form-control-file" />
+            </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

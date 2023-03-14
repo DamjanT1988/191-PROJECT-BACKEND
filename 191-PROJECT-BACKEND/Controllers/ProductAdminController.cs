@@ -56,7 +56,7 @@ namespace _191_PROJECT_BACKEND.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Product_title,Ean_number,Product_description,Price,Amount_storage,Expiration_date,Category,IsSwedish,Image_path")] ProductModel productModel)
+        public async Task<IActionResult> Create([Bind("Id,Product_title,Ean_number,Product_description,Price,Amount_storage,Expiration_date,Category,IsSwedish,Image_path,Image_file")] ProductModel productModel)
         {
             if (ModelState.IsValid)
             {
