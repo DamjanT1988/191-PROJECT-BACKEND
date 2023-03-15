@@ -1,11 +1,33 @@
 html {
-  font-size: 14px;
+    font-size: 18px;
+    font-family: 'Arial Narrow', Arial, sans-serif;
 }
 
+.control-label {
+    font-weight: 700;
+    margin-bottom: 7.5px;
+    margin-top: 15px;
+    font-size: 1.2em;
+}
+
+.btn-primary {
+    background-color:navy;
+}
+
+.form-control {
+    font-weight: 100;
+    font-size: 1.35em;
+}
+
+.btn {
+    font-weight: 700;
+    font-size: 1.35em;
+}
+
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    html {
+    font-size: 20px;
   }
 }
 
@@ -16,4 +38,10 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+@media (max-width: 767px) {
+    html {
+        font-size: 24px;
+    }
 }
