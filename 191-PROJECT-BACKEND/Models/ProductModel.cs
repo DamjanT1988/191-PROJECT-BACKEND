@@ -10,11 +10,12 @@ namespace _191_PROJECT_BACKEND.Models
 {
     public class ProductModel
     {
-            //data fields
-            public int Id { get; set; }
+        //data fields
+        [Display(Name = "Product ID number:")]
+        public int Id { get; set; }
 
         //user input and object properties
-        //[Required]
+        [Required]
         [Display(Name = "Title:")]
         public string? Product_title { get; set; }
 

@@ -7,77 +7,72 @@
 <h1>MAIN LIST - PRODUCTS</h1>
 
 <p>
-    <a asp-action="Create">Create product article</a>
+    <a asp-action="Create">Add product article</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Product_title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ean_number)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Product_description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Amount_storage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Expiration_date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsSwedish)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image_path)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product_title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ean_number)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product_description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount_storage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Expiration_date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsSwedish)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image_path)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+
+@foreach (var item in Model)
+{
+    if (item.Id != null)
+    {
+        <strong>@Html.DisplayNameFor(model => model.Id)</strong>
+        <br />
+        @Html.DisplayFor(modelItem => item.Id)
+        <br />
+        <br />
+        <strong>@Html.DisplayNameFor(model => model.Product_title)</strong>
+        <br />
+        @Html.DisplayFor(modelItem => item.Product_title)
+        <br />
+        <br />
+        <strong>@Html.DisplayNameFor(model => model.Ean_number)</strong>
+        <br />
+        @Html.DisplayFor(modelItem => item.Ean_number)
+        <br />
+        <br />
+        <strong>@Html.DisplayNameFor(model => model.Product_description)</strong>
+        <br />
+        @Html.DisplayFor(modelItem => item.Product_description)
+        <br />
+        <br />
+        <strong>@Html.DisplayNameFor(model => model.Price)</strong>
+        <br />
+        @Html.DisplayFor(modelItem => item.Price)
+        <br />
+        <br />
+        <strong>@Html.DisplayNameFor(model => model.Amount_storage)</strong>
+        <br />
+        @Html.DisplayFor(modelItem => item.Amount_storage)
+        <br />
+        <br />
+        <strong>@Html.DisplayNameFor(model => model.Expiration_date)</strong>
+        <br />
+        @Html.DisplayFor(modelItem => item.Expiration_date)
+        <br />
+        <br />
+        <strong>@Html.DisplayNameFor(model => model.Category)</strong>
+        <br />
+        @Html.DisplayFor(modelItem => item.Category)
+        <br />
+        <br />
+        <strong>@Html.DisplayNameFor(model => model.IsSwedish)</strong>
+        <br />
+        @Html.DisplayFor(modelItem => item.IsSwedish)
+        <br />
+        <br />
+        <strong>@Html.DisplayNameFor(model => model.Image_path)</strong>
+        <br />
+        @Html.DisplayFor(modelItem => item.Image_path)
+        <br />
+        <br />
+        <div>
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </div>
+    }
+
 }
-    </tbody>
-</table>
+
+<style>
+
+</style>

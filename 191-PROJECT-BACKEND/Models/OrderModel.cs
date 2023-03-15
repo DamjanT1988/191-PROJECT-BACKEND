@@ -10,8 +10,9 @@ namespace _191_PROJECT_BACKEND.Models
 {
     public class OrderModel
     {
-            //data fields
-            public int Id { get; set; }
+        //data fields
+        [Display(Name = "Order ID number:")]
+        public int Id { get; set; }
 
         //user input and object properties
         [Display(Name = "Order information:")]
