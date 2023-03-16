@@ -79,9 +79,6 @@ namespace _191_PROJECT_BACKEND.Controllers
                         await productModel.Image_file.CopyToAsync(fileStream);
                     }
 
-                    //create miniatures
-                    //CreateImageFiles(fileName);
-
                 }
                 else
                 {

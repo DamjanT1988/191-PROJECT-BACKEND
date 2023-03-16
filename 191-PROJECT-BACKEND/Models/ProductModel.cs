@@ -40,11 +40,11 @@ namespace _191_PROJECT_BACKEND.Models
         public string? Expiration_date { get; set; }
 
         //[Required]
-        [Display(Name = "Category:")]
+        [Display(Name = "Category: (1 = 'Domestic', 2 = 'Foreign'")]
         public int? Category { get; set; }
 
         //[Required]
-        [Display(Name = "Made in Sweden?")]
+        [Display(Name = "Made in Sweden? ('True' = Yes; 'False' = No")]
         public bool? IsSwedish { get; set; }
         [Display(Name = "Image file name:")]
         public string? Image_path { get; set; }
@@ -53,10 +53,9 @@ namespace _191_PROJECT_BACKEND.Models
             [NotMapped]
             [Display(Name = "Image file")]
             public IFormFile? Image_file { get; set; }
-            
-
-        //************
-        [NotMapped]
-        public byte[] Image_data { get; set; } // New property
+           
+            //save data from transfer by API
+            [NotMapped]
+            public byte[]? Image_data { get; set; }
     }
 }

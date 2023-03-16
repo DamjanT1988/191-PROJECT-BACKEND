@@ -45,24 +45,11 @@ namespace _191_PROJECT_BACKEND.Controllers
                     await stream.ReadAsync(productModel.Image_data, 0, (int)stream.Length);
                 }
             }
-
+        
             return productModels;
         }
 
         // GET: api/Product/5
-        /*[HttpGet("{id}")]
-        public async Task<ActionResult<ProductModel>> GetProductModel(int id)
-        {
-            var productModel = await _context.ProductModel.FindAsync(id);
-
-            if (productModel == null)
-            {
-                return NotFound();
-            }
-
-            return productModel;
-        }*/
-
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductModel>> GetProductModel(int id)
         {
@@ -73,20 +60,8 @@ namespace _191_PROJECT_BACKEND.Controllers
                 return NotFound();
             }
 
-            // Retrieve the image file from the server
-            //var imagePath = Path.Combine("imageupload", $"{productModel.Image_path}");
-            var imagePath = Path.Combine("wwwroot", "imageupload","11111234103170.jpg");
-
-            if (System.IO.File.Exists(imagePath))
-            {
-                using var stream = new FileStream(imagePath, FileMode.Open, FileAccess.Read);
-                productModel.Image_data = new byte[stream.Length];
-                await stream.ReadAsync(productModel.Image_data, 0, (int)stream.Length);
-            }
-
             return productModel;
         }
-
 
 
         // POST: api/Product
