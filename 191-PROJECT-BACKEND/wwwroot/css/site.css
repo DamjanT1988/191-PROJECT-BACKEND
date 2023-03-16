@@ -29,6 +29,9 @@ html {
     html {
     font-size: 20px;
   }
+    header {
+    font-size: 16px;
+    }
 }
 
 html {
@@ -48,5 +51,9 @@ body {
     .btn {
         font-weight: 700;
         font-size: 1.2em;
+    }
+
+    header {
+        font-size: 10px;
     }
 }
