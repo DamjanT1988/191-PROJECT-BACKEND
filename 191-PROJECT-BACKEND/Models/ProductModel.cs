@@ -46,7 +46,7 @@ namespace _191_PROJECT_BACKEND.Models
         //[Required]
         [Display(Name = "Made in Sweden?")]
         public bool? IsSwedish { get; set; }
-        [Display(Name = "Image stored at:")]
+        [Display(Name = "Image file name:")]
         public string? Image_path { get; set; }
  
             //not stored in DB, but shown in UI

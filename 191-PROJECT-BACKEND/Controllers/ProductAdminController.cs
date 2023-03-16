@@ -15,7 +15,7 @@ namespace _191_PROJECT_BACKEND.Controllers
     public class ProductAdminController : Controller
     {
         private readonly ProductContext _context;
-
+        
         public ProductAdminController(ProductContext context)
         {
             _context = context;

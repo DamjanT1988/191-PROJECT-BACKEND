@@ -24,6 +24,10 @@ html {
     font-size: 1.3em;
 }
 
+.productImages {
+    max-width: 40%;
+}
+
 
 @media (min-width: 768px) {
     html {
@@ -56,4 +60,8 @@ body {
     header {
         font-size: 10px;
     }
+    .productImages {
+        max-width: 60%;
+    }
+
 }
