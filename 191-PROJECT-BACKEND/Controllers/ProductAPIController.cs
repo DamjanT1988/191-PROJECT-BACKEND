@@ -15,21 +15,42 @@ namespace _191_PROJECT_BACKEND.Controllers
     public class ProductAPIController : ControllerBase
     {
         private readonly ProductContext _context;
+        //private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public ProductAPIController(ProductContext context)
+        public ProductAPIController(ProductContext context/*, IWebHostEnvironment hostingEnvironment*/)
         {
             _context = context;
+            //_hostingEnvironment = hostingEnvironment;
         }
 
         // GET: api/Product
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductModel>>> GetProductModel()
         {
-            return await _context.ProductModel.ToListAsync();
+            var productModels = await _context.ProductModel.ToListAsync();
+
+            if (productModels == null)
+            {
+                return NotFound();
+            }
+
+            foreach (var productModel in productModels)
+            {
+                var imagePath = Path.Combine("wwwroot", "imageupload", productModel.Image_path);
+
+                if (System.IO.File.Exists(imagePath))
+                {
+                    using var stream = new FileStream(imagePath, FileMode.Open, FileAccess.Read);
+                    productModel.Image_data = new byte[stream.Length];
+                    await stream.ReadAsync(productModel.Image_data, 0, (int)stream.Length);
+                }
+            }
+
+            return productModels;
         }
 
         // GET: api/Product/5
-        [HttpGet("{id}")]
+        /*[HttpGet("{id}")]
         public async Task<ActionResult<ProductModel>> GetProductModel(int id)
         {
             var productModel = await _context.ProductModel.FindAsync(id);
@@ -40,7 +61,32 @@ namespace _191_PROJECT_BACKEND.Controllers
             }
 
             return productModel;
+        }*/
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ProductModel>> GetProductModel(int id)
+        {
+            var productModel = await _context.ProductModel.FindAsync(id);
+
+            if (productModel == null)
+            {
+                return NotFound();
+            }
+
+            // Retrieve the image file from the server
+            //var imagePath = Path.Combine("imageupload", $"{productModel.Image_path}");
+            var imagePath = Path.Combine("wwwroot", "imageupload","11111234103170.jpg");
+
+            if (System.IO.File.Exists(imagePath))
+            {
+                using var stream = new FileStream(imagePath, FileMode.Open, FileAccess.Read);
+                productModel.Image_data = new byte[stream.Length];
+                await stream.ReadAsync(productModel.Image_data, 0, (int)stream.Length);
+            }
+
+            return productModel;
         }
+
 
 
         // POST: api/Product

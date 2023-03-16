@@ -53,5 +53,10 @@ namespace _191_PROJECT_BACKEND.Models
             [NotMapped]
             [Display(Name = "Image file")]
             public IFormFile? Image_file { get; set; }
+            
+
+        //************
+        [NotMapped]
+        public byte[] Image_data { get; set; } // New property
     }
 }
