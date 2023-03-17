@@ -10,42 +10,51 @@ using _191_PROJECT_BACKEND.Models;
 
 namespace _191_PROJECT_BACKEND.Controllers
 {
+    //route to controller and identify
     [Route("api/[controller]")]
     [ApiController]
     public class ProductAPIController : ControllerBase
     {
+        //save db connection
         private readonly ProductContext _context;
-        //private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public ProductAPIController(ProductContext context/*, IWebHostEnvironment hostingEnvironment*/)
+        //construct the db connection
+        public ProductAPIController(ProductContext context)
         {
             _context = context;
-            //_hostingEnvironment = hostingEnvironment;
         }
 
         // GET: api/Product
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductModel>>> GetProductModel()
         {
+            //save list im variable
             var productModels = await _context.ProductModel.ToListAsync();
 
+            //check if null
             if (productModels == null)
             {
                 return NotFound();
             }
 
+            //loop through each product
             foreach (var productModel in productModels)
             {
+                //construct and save image path
                 var imagePath = Path.Combine("wwwroot", "imageupload", productModel.Image_path);
 
+                //check if file exist by image path
                 if (System.IO.File.Exists(imagePath))
                 {
+                    //save the file data in stream variable
                     using var stream = new FileStream(imagePath, FileMode.Open, FileAccess.Read);
+                    //save file stream in byte to product property Image_data
                     productModel.Image_data = new byte[stream.Length];
+                    //wait for read
                     await stream.ReadAsync(productModel.Image_data, 0, (int)stream.Length);
                 }
             }
-        
+            //return
             return productModels;
         }
 
@@ -53,8 +62,10 @@ namespace _191_PROJECT_BACKEND.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductModel>> GetProductModel(int id)
         {
+            //save prodcut in variable
             var productModel = await _context.ProductModel.FindAsync(id);
 
+            //check if null
             if (productModel == null)
             {
                 return NotFound();
@@ -69,7 +80,7 @@ namespace _191_PROJECT_BACKEND.Controllers
         public async Task<ActionResult<ProductModel>> PostProductModel(ProductModel productModel)
         {
             
-                //image or not?
+                //check if nukk
                 if (productModel.Image_file != null)
                 {
                     //save image to wwwroot/imageupload
@@ -88,17 +99,16 @@ namespace _191_PROJECT_BACKEND.Controllers
                         await productModel.Image_file.CopyToAsync(fileStream);
                     }
 
-                    //create miniatures
-                    //CreateImageFiles(fileName);
-
                 }
                 else
                 {
                     productModel.Image_path = null;
                 }
-
+                //add to products in db
                 _context.ProductModel.Add(productModel);
+                //save changes
                 await _context.SaveChangesAsync();
+                //return new
                 return CreatedAtAction("GetProductModel", new { id = productModel.Id }, productModel);
 
         }
@@ -107,25 +117,31 @@ namespace _191_PROJECT_BACKEND.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProductModel(int id, ProductModel productModel)
         {
+            //check if exist
             if (id != productModel.Id)
             {
                 return BadRequest();
             }
 
+            //modify state
             _context.Entry(productModel).State = EntityState.Modified;
 
+            //try to save changes
             try
             {
                 await _context.SaveChangesAsync();
             }
+            //catch errors
             catch (DbUpdateConcurrencyException)
             {
+                //ID does not exist
                 if (!ProductModelExists(id))
                 {
                     return NotFound();
                 }
                 else
                 {
+                    //throw general exception
                     throw;
                 }
             }
@@ -138,12 +154,16 @@ namespace _191_PROJECT_BACKEND.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProductModel(int id)
         {
+            //save product in variable from db
             var productModel = await _context.ProductModel.FindAsync(id);
+            
+            //check if null
             if (productModel == null)
             {
                 return NotFound();
             }
 
+            //remove product in db and save changes
             _context.ProductModel.Remove(productModel);
             await _context.SaveChangesAsync();
 

@@ -10,12 +10,15 @@ using _191_PROJECT_BACKEND.Models;
 
 namespace _191_PROJECT_BACKEND.Controllers
 {
+    //route to controller and identify
     [Route("api/[controller]")]
     [ApiController]
     public class OrderAPIController : ControllerBase
     {
+        //save db connection
         private readonly OrderContext _context;
 
+        //construct the db connection
         public OrderAPIController(OrderContext context)
         {
             _context = context;
@@ -32,32 +35,37 @@ namespace _191_PROJECT_BACKEND.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<OrderModel>> GetOrderModel(int id)
         {
+            //save order in variable
             var orderModel = await _context.OrderModel.FindAsync(id);
 
+            //check if null
             if (orderModel == null)
             {
                 return NotFound();
             }
-
+            //return order
             return orderModel;
         }
 
         // PUT: api/Order/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutOrderModel(int id, OrderModel orderModel)
         {
+            //check if order exist by ID
             if (id != orderModel.Id)
             {
                 return BadRequest();
             }
 
+            //modify the order in db
             _context.Entry(orderModel).State = EntityState.Modified;
 
+            //try to save in db
             try
             {
                 await _context.SaveChangesAsync();
             }
+            //catch errors
             catch (DbUpdateConcurrencyException)
             {
                 if (!OrderModelExists(id))
@@ -69,18 +77,18 @@ namespace _191_PROJECT_BACKEND.Controllers
                     throw;
                 }
             }
-
+            //return not found
             return NoContent();
         }
 
         // POST: api/Order
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<OrderModel>> PostOrderModel(OrderModel orderModel)
         {
+            //add order in db and save changes
             _context.OrderModel.Add(orderModel);
             await _context.SaveChangesAsync();
-
+            //return new order
             return CreatedAtAction("GetOrderModel", new { id = orderModel.Id }, orderModel);
         }
 
@@ -88,12 +96,14 @@ namespace _191_PROJECT_BACKEND.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrderModel(int id)
         {
+            //save order in variable
             var orderModel = await _context.OrderModel.FindAsync(id);
+            //check if null
             if (orderModel == null)
             {
                 return NotFound();
             }
-
+            //remove order from db and save
             _context.OrderModel.Remove(orderModel);
             await _context.SaveChangesAsync();
 

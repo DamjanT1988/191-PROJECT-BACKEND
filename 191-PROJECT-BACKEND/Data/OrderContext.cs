@@ -9,6 +9,7 @@ namespace _191_PROJECT_BACKEND.Data
 {
     public class OrderContext : DbContext
     {
+        //data context
         public OrderContext (DbContextOptions<OrderContext> options)
             : base(options)
         {

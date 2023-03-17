@@ -9,6 +9,7 @@ namespace _191_PROJECT_BACKEND.Data
 {
     public class ProductContext : DbContext
     {
+        //data context
         public ProductContext (DbContextOptions<ProductContext> options)
             : base(options)
         {
