@@ -2,8 +2,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using _191_PROJECT_BACKEND.Data;
 using Microsoft.Extensions.DependencyInjection;
+
+//create builder
 var builder = WebApplication.CreateBuilder(args);
 
+//create db connections
 builder.Services.AddDbContext<OrderContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("OrderContext") ?? throw new InvalidOperationException("Connection string 'OrderContext' not found.")));
 
@@ -14,13 +17,14 @@ var connectionString = builder.Configuration.GetConnectionString("UserContext") 
 builder.Services.AddDbContext<UserContext>(options =>
     options.UseSqlite(connectionString));
 
+//add signin requirement
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<UserContext>();
 
-// Add services to the container.
+//add services to the container.
 builder.Services.AddControllersWithViews();
 
-//!!!!!!!!!!!!!!!
+//add CORS policy
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", builder => builder
@@ -29,30 +33,32 @@ builder.Services.AddCors(options =>
         .AllowAnyHeader());
 });
 
+//build the app
 var app = builder.Build();
 
+//use CORS
 app.UseCors("CorsPolicy");
-//Configure the HTTP request pipeline.
-/*if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}*/
 
+//use HTTPS redirections
 app.UseHttpsRedirection();
+
+//use files in wwwroot etc
 app.UseStaticFiles();
 
+//use routing
 app.UseRouting();
-app.UseAuthentication();;
 
+//use authentication and authorization
+app.UseAuthentication();;
 app.UseAuthorization();
 
+//map the controller routes
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=ProductAdmin}/{action=Index}/{id?}");
 
-//!!!!!!!!!!!!!!!!!!!!
+//map the Razor pages
 app.MapRazorPages();
 
+//run the app
 app.Run();
