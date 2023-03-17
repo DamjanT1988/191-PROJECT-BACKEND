@@ -40,11 +40,11 @@ namespace _191_PROJECT_BACKEND.Models
         public string? Expiration_date { get; set; }
 
         //[Required]
-        [Display(Name = "Category: (1 = 'Domestic', 2 = 'Foreign'")]
+        [Display(Name = "Category:")]
         public int? Category { get; set; }
 
         //[Required]
-        [Display(Name = "Made in Sweden? ('True' = Yes; 'False' = No")]
+        [Display(Name = "Made in Sweden?")]
         public bool? IsSwedish { get; set; }
         [Display(Name = "Image file name:")]
         public string? Image_path { get; set; }
